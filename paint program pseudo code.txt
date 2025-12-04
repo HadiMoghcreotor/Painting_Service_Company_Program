@@ -1,0 +1,57 @@
+Start
+
+#Variables
+DOOR_AREA = 2 m sqr
+
+(repeat them based on how many walls there are)
+#Wall Questions (1-20) 
+numWalls = Input: "Enter number of walls" 
+lenWall = Input: "Enter wall's length"
+widWall = Input: "Enter wall's width"
+
+#door questions
+doorExist = Input: "Are there any doors in this wall?"
+if doorExist = yes
+	doorNum = Input: "How many?"
+	Calculate: doorArea = doorNum*2
+
+#window questions
+windowExist = Input: "Are there any windows in this wall?"
+if windowExist = yes
+	windowNum = Input: "How many?"
+	#Ask these questions (windowNum) times
+	windowlen = Input: "Enter length"
+	windowWid = Input: "Enter Width"
+	Calculate: windowArea = windowlen*windowWid
+
+#now these questions DON'T repeat based on how many walls there are
+
+#pantable area section
+Calculate: TotalWallArea = sum of all walls area
+Calculate: TotalDoorArea = sum of all doors area
+Calculate: TotalWindowArea = sum of all windows area
+Calculate: paintableArea = TotalWallArea - (TotalDoorArea + TotalWindowArea)
+
+#paint requirments section
+Litresreq = paintableArea // 5
+5L_tins = Litresreq // 5
+remainder = paintableArea % 5
+3L_tins = remainder // 3
+remainder = remainder % 3
+2L_tins = remainder // 2
+remainder = remainder % 2
+1L_tins = remainder // 1
+remainder = remainder % 1
+
+#cost section
+Calculate: LABOUR_COST = 5*paintableArea
+Calculate: cost_5L_tin = 5L_tins*50	
+Calculate: cost_3L_tin = 3L_tins*35
+Calculate: cost_2L_tin = 2L_tins*25
+Calculate: cost_1L_tin = 1L_tins*15
+Calculate: Total_tins_cost =  cost_5L_tin + cost_3L_tin + cost_2L_tin + cost_1L_tin
+Total_cost = Total_tins_cost + LABOUR_COST
+
+
+
+
